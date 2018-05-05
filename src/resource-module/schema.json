@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema",
-  "id": "SchematicsAngularResourceModule",
+  "id": "SchematicsAngularModule",
   "title": "Angular Module Options Schema",
   "type": "object",
   "properties": {

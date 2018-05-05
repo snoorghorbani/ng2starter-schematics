@@ -32,6 +32,7 @@ import { Schema as ModuleOptions } from './schema';
 
 function addDeclarationToNgModule(options: ModuleOptions): Rule {
   return (host: Tree) => {
+    console.log(options);
     if (!options.module) {
       return host;
     }
@@ -72,6 +73,7 @@ function addDeclarationToNgModule(options: ModuleOptions): Rule {
 
 export default function (options: ModuleOptions): Rule {
   return (host: Tree, context: SchematicContext) => {
+    console.log(options);
     const workspace = getWorkspace(host);
     if (!options.project) {
       throw new SchematicsException('Option (project) is required.');

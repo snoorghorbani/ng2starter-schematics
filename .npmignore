@@ -1,3 +1,6 @@
 # Ignores TypeScript files, but keeps definitions.
 *.ts
-!*.d.ts
+*.d.ts
+!src/**/files/**/*.ts
+
+node_modules

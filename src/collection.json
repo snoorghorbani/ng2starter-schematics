@@ -1,13 +1,12 @@
 {
-  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "component": {
-      "description": "A blank schematic.",
-      "factory": "./component/index#Component"
-    },
-    "resource-module": {
+    "resourcemodule": {
+      "aliases": [
+        "m"
+      ],
+      "factory": "./resource-module",
       "description": "resource management module.",
-      "factory": "./resource-module/index#ResourceModule"
+      "schema": "./resource-module/schema.json"
     }
   }
 }
