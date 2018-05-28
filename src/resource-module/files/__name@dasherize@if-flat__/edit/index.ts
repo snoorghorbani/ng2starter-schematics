@@ -1,3 +1,3 @@
-export * from "./edit-role-container";
-export * from "./edit-role";
-export * from "./edit-role.effects";
+export * from "./edit-<%= dasherize(name) %>-container";
+export * from "./edit-<%= dasherize(name) %>";
+export * from "./edit-<%= dasherize(name) %>.effects";

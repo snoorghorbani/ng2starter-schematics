@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { AppState } from "../../role.reducers";
+import { AppState } from "../../<%= dasherize(name) %>.reducers";
 import { Store } from "@ngrx/store";
 import { ActivatedRoute } from "@angular/router";
 import { <%= classify(name) %>Model } from "../../models";

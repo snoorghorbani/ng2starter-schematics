@@ -7,9 +7,9 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { stringTemplate } from "@soushians/infra";
 
 import { <%= classify(name) %>Model, Add<%= classify(name) %>ApiModel, Edit<%= classify(name) %>ApiModel, <%= classify(name) %>ListApiModel } from "../models";
-import { <%= classify(name) %>ConfigurationService } from "./role-configuration.service";
+import { <%= classify(name) %>ConfigurationService } from "./<%= dasherize(name) %>-configuration.service";
 
-import { AppState } from "../role.reducers";
+import { AppState } from "../<%= dasherize(name) %>.reducers";
 
 @Injectable()
 export class <%= classify(name) %>Service {
@@ -29,20 +29,18 @@ export class <%= classify(name) %>Service {
 			.switchMap(config => this.http.post(config.endpoints.add<%= classify(name) %>, model.getRequestBody()))
 			.map((response: Add<%= classify(name) %>ApiModel.Response) => response.Result);
 	}
-	get(_id: string): Observable<<%= classify(name) %>Model> {
+	get(<%= id %>: string): Observable<<%= classify(name) %>Model> {
 		return this.configurationService.config$
 			.filter(config => config.endpoints.get<%= classify(name) %> != "")
 			.take(1)
-			.switchMap(config => this.http.get(stringTemplate(config.endpoints.get<%= classify(name) %>, { _id })))
+			.switchMap(config => this.http.get(stringTemplate(config.endpoints.get<%= classify(name) %>, { <%= id %> })))
 			.map((response: Edit<%= classify(name) %>ApiModel.Response) => response.Result);
 	}
 	getList(): Observable<<%= classify(name) %>Model[]> {
-		debugger;
 		return this.configurationService.config$
-			// .filter(config => config.endpoints.getList != "")
-			// .switchMap(config => this.http.get(config.endpoints.getList))
-			// .map((response: <%= classify(name) %>ListApiModel.Response) => response.Result);
-			.map(() => ([{ "_id": "22" }, { "_id": "11" }]));
+			.filter(config => config.endpoints.getList != "")
+			.switchMap(config => this.http.get(config.endpoints.getList))
+			.map((response: <%= classify(name) %>ListApiModel.Response) => response.Result);
 	}
 	update(data: Edit<%= classify(name) %>ApiModel.Request): Observable<<%= classify(name) %>Model> {
 		const model = new Edit<%= classify(name) %>ApiModel.Request(data);
@@ -52,17 +50,17 @@ export class <%= classify(name) %>Service {
 			.switchMap(config => this.http.put(config.endpoints.edit<%= classify(name) %>, model.getRequestBody()))
 			.map((response: Edit<%= classify(name) %>ApiModel.Response) => response.Result);
 	}
-	delete(_id: string) {
+	delete(<%= id %>: string) {
 		return this.configurationService.config$
 			.filter(config => config.endpoints.delete<%= classify(name) %> != "")
 			.switchMap(config => this.http.get(config.endpoints.delete<%= classify(name) %>));
 	}
-	select<%= classify(name) %>ById(_id: string): Observable<<%= classify(name) %>Model> {
+	select<%= classify(name) %>ById(<%= id %>: string): Observable<<%= classify(name) %>Model> {
 		const subject = new BehaviorSubject<<%= classify(name) %>Model>(undefined);
 		this.store
-			.select(state => state.role.db.data)
-			.filter(roles => roles != null)
-			.map(roles => roles.find(role => role._id == _id))
+			.select(state => state.<%= dasherize(name) %>.db.data)
+			.filter(<%= dasherize(name) %>s => <%= dasherize(name) %>s != null)
+			.map(<%= dasherize(name) %>s => <%= dasherize(name) %>s.find(<%= dasherize(name) %> => <%= dasherize(name) %>.<%= id %> == <%= id %>))
 			.subscribe(<%= classify(name) %>Model => subject.next(<%= classify(name) %>Model));
 		return subject.asObservable();
 	}

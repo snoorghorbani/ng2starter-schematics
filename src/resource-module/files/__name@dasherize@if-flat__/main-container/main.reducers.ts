@@ -39,7 +39,7 @@ export function reducer(state = initialState, action: <%= classify(name) %>sList
 		}
 		case <%= classify(name) %>sListActionTypes.ROLE_UPDATE: {
 			const data = state.data.concat();
-			var entityIdx = state.data.findIndex(role => role._id == action.payload._id);
+			var entityIdx = state.data.findIndex(<%= dasherize(name) %> => <%= dasherize(name) %>.<%= id %> == action.payload.<%= id %>);
 			if (entityIdx > -1) {
 				data[entityIdx] = Object.assign({}, data[entityIdx], action.payload);
 			} else {
@@ -52,7 +52,7 @@ export function reducer(state = initialState, action: <%= classify(name) %>sList
 		}
 		case <%= classify(name) %>sListActionTypes.ADD_ROLE: {
 			const data = state.data.concat();
-			var entityIdx = state.data.findIndex(role => role._id == action.payload._id);
+			var entityIdx = state.data.findIndex(<%= dasherize(name) %> => <%= dasherize(name) %>.<%= id %> == action.payload.<%= id %>);
 			if (entityIdx > -1) {
 				data[entityIdx] = Object.assign({}, data[entityIdx], action.payload);
 			} else {
@@ -65,7 +65,7 @@ export function reducer(state = initialState, action: <%= classify(name) %>sList
 		}
 		case <%= classify(name) %>sListActionTypes.ROLE_FETCHED: {
 			const data = state.data.concat();
-			var entityIdx = state.data.findIndex(role => role._id == action.payload._id);
+			var entityIdx = state.data.findIndex(<%= dasherize(name) %> => <%= dasherize(name) %>.<%= id %> == action.payload.<%= id %>);
 			if (entityIdx > -1) {
 				data[entityIdx] = Object.assign({}, data[entityIdx], action.payload);
 			} else {

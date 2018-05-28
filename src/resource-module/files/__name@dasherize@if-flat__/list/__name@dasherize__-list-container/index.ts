@@ -1,1 +1,1 @@
-export * from "./role-list.container.component";
+export * from "./<%= dasherize(name) %>-list.container.component";

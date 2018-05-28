@@ -1,2 +1,2 @@
-export * from "./role-list";
-export * from "./role-list-container";
+export * from "./<%= dasherize(name) %>-list";
+export * from "./<%= dasherize(name) %>-list-container";

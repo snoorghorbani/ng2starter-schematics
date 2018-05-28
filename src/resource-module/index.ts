@@ -14,10 +14,8 @@ import {
   apply,
   branchAndMerge,
   chain,
-  filter,
   mergeWith,
   move,
-  noop,
   template,
   url,
 } from '@angular-devkit/schematics';
@@ -93,8 +91,6 @@ export default function (options: ModuleOptions): Rule {
     options.path = parsedPath.path;
 
     const templateSource = apply(url('./files'), [
-      options.spec ? noop() : filter(path => !path.endsWith('.spec.ts')),
-      options.routing ? noop() : filter(path => !path.endsWith('-routing.module.ts')),
       template({
         ...strings,
         'if-flat': (s: string) => options.flat ? '' : s,

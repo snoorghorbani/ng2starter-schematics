@@ -1,5 +1,5 @@
-export * from "./add-role-container";
-export * from "./add-role";
-export * from "./add-role.actions";
-export * from "./add-role.effects";
-// export * from "./add-role.reducer";
+export * from "./add-<%= dasherize(name) %>-container";
+export * from "./add-<%= dasherize(name) %>";
+export * from "./add-<%= dasherize(name) %>.actions";
+export * from "./add-<%= dasherize(name) %>.effects";
+// export * from "./add-<%= dasherize(name) %>.reducer";

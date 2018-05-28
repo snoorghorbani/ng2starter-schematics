@@ -1,12 +1,25 @@
 {
   "schematics": {
+    "simplemodule": {
+      "aliases": [
+        "s_m"
+      ],
+      "factory": "./simple-module",
+      "description": "simple management module.",
+      "schema": "./simple-module/schema.json"
+    },
     "resourcemodule": {
       "aliases": [
-        "m"
+        "r_m"
       ],
       "factory": "./resource-module",
       "description": "resource management module.",
       "schema": "./resource-module/schema.json"
+    },
+    "api": {
+      "factory": "./api",
+      "description": "service api.",
+      "schema": "./api/schema.json"
     }
   }
 }

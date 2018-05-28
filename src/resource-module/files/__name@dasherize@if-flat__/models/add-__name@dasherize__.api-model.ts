@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 import { HttpRequestBaseModel } from "@soushians/shared";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { <%= classify(name) %>Model } from "./role.model";
+import { <%= classify(name) %>Model } from "./<%= dasherize(name) %>.model";
 
 export namespace Add<%= classify(name) %>ApiModel {
 	export class Request implements HttpRequestBaseModel<Request> {
-		_id: string;
+		<%= id %>: string;
 		name: string;
 		form: any[];
 		events: any[];
@@ -22,7 +22,7 @@ export namespace Add<%= classify(name) %>ApiModel {
 		}
 		static get formGroup() {
 			return new FormGroup({
-				_id: new FormControl("", [Validators.required]),
+				<%= id %>: new FormControl("", [Validators.required]),
 				name: new FormControl("", [Validators.required]),
 				title: new FormControl("", [Validators.required]),
 				form: new FormControl({}),

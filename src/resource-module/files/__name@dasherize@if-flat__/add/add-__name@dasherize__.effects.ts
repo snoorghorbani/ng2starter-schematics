@@ -12,7 +12,7 @@ import { Store } from "@ngrx/store";
 
 import { <%= classify(name) %>Service } from "../services";
 import { Add<%= classify(name) %>ApiModel } from "../models";
-import { Add<%= classify(name) %>ActionTypes, Add<%= classify(name) %>StartAction, Add<%= classify(name) %>SucceedAction, Add<%= classify(name) %>FailedAction } from "./add-role.actions";
+import { Add<%= classify(name) %>ActionTypes, Add<%= classify(name) %>StartAction, Add<%= classify(name) %>SucceedAction, Add<%= classify(name) %>FailedAction } from "./add-<%= dasherize(name) %>.actions";
 import { map, switchMap, catchError } from "rxjs/operators";
 
 @Injectable()

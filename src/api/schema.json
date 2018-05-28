@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsAngularServiceApi",
+  "title": "Angular service call api",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the module.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "namespace":  {
+      "type": "string",
+      "description": "Allows specification of the declaring module.",
+      "alias": "n"
+    },
+    "entity":  {
+      "type": "string",
+      "description": "Allows specification of the declaring module.",
+      "alias": "e"
+    }
+  },
+  "required": []
+}

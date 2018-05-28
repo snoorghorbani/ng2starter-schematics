@@ -14,7 +14,7 @@ import {
 	Edit<%= classify(name) %>StartAction,
 	Edit<%= classify(name) %>SucceedAction,
 	Edit<%= classify(name) %>FailedAction
-} from "./edit-role.actions";
+} from "./edit-<%= dasherize(name) %>.actions";
 import { Update<%= classify(name) %>Action } from "../main-container";
 
 @Injectable()
@@ -35,7 +35,7 @@ export class Edit<%= classify(name) %>Effects {
 		.pipe(
 			map(action => action.payload),
 			switchMap((data: Edit<%= classify(name) %>ApiModel.Request) => this.service.update(data)),
-			map(roleSchema => new Edit<%= classify(name) %>SucceedAction(roleSchema)),
+			map(<%= dasherize(name) %>Schema => new Edit<%= classify(name) %>SucceedAction(<%= dasherize(name) %>Schema)),
 			catchError(() => Observable.of(new Edit<%= classify(name) %>FailedAction())))
 
 	@Effect()
@@ -43,6 +43,6 @@ export class Edit<%= classify(name) %>Effects {
 		.ofType(Edit<%= classify(name) %>ActionTypes.SUCCEED)
 		.pipe(
 			map(action => action.payload),
-			map(roleSchema => new Update<%= classify(name) %>Action(roleSchema))
+			map(<%= dasherize(name) %>Schema => new Update<%= classify(name) %>Action(<%= dasherize(name) %>Schema))
 		)
 }

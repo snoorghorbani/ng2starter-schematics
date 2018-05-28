@@ -1,1 +1,1 @@
-export * from "./add-role.component";
+export * from "./add-<%= dasherize(name) %>.component";

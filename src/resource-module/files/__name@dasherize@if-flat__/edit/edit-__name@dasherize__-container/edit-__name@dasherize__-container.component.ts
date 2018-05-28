@@ -4,18 +4,18 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs/Observable";
 
-import { AppState } from "../../role.reducers";
+import { AppState } from "../../<%= dasherize(name) %>.reducers";
 import { <%= classify(name) %>Model, Edit<%= classify(name) %>ApiModel } from "../../models";
 import { <%= classify(name) %>Service } from "../../services";
-import { Edit<%= classify(name) %>Action } from "../edit-role.actions";
+import { Edit<%= classify(name) %>Action } from "../edit-<%= dasherize(name) %>.actions";
 import { Add<%= classify(name) %>ContainerComponent } from "../../add";
 import { Get<%= classify(name) %>Action } from "../../main-container";
 
 @Component({
-	template: `<edit-role
+	template: `<edit-<%= dasherize(name) %>
 					[formGroup]="formGroup"
 					(submited)="update($event)">
-				</edit-role>`
+				</edit-<%= dasherize(name) %>>`
 })
 export class Edit<%= classify(name) %>ContainerComponent extends Add<%= classify(name) %>ContainerComponent {
 	formGroup = Edit<%= classify(name) %>ApiModel.Request.formGroup;
@@ -25,11 +25,11 @@ export class Edit<%= classify(name) %>ContainerComponent extends Add<%= classify
 
 	ngOnInit() {
 		this.route.params
-			.map(params => params["_id"])
+			.map(params => params["<%= id %>"])
 			.subscribe(id => this.store.dispatch(new Get<%= classify(name) %>Action(id)));
 
 		this.route.params
-			.map(params => params["_id"])
+			.map(params => params["<%= id %>"])
 			.switchMap(id => this.service.select<%= classify(name) %>ById(id))
 			.filter(data => data != null)
 			.take(1)

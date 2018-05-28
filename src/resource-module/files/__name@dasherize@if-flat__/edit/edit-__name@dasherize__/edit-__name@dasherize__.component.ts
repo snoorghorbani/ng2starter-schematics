@@ -9,8 +9,8 @@ import { Add<%= classify(name) %>Component } from "../../add";
 import { FormGroup } from "@angular/forms";
 
 @Component({
-	selector: "edit-role",
-	templateUrl: "./edit-role.component.html"
+	selector: "edit-<%= dasherize(name) %>",
+	templateUrl: "./edit-<%= dasherize(name) %>.component.html"
 })
 export class Edit<%= classify(name) %>Component extends Add<%= classify(name) %>Component {
 	emit() {

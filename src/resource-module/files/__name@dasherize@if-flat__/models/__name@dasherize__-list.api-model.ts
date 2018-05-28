@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpRequestBaseModel } from "@soushians/shared";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { <%= classify(name) %>Model } from "./role.model";
+import { <%= classify(name) %>Model } from "./<%= dasherize(name) %>.model";
 
 export namespace <%= classify(name) %>ListApiModel {
 	export class Request implements HttpRequestBaseModel<Request> {

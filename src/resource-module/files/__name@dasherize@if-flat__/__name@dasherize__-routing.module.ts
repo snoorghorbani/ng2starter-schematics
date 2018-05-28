@@ -8,7 +8,7 @@ import { <%= classify(name) %>ListContainerComponent } from "./list";
 
 const routes: Routes = [
 	{
-		path: "role",
+		path: "<%= dasherize(name) %>",
 		component: MainContainerComponent,
 		children: [
 			{
@@ -20,7 +20,7 @@ const routes: Routes = [
 				component: Add<%= classify(name) %>ContainerComponent
 			},
 			{
-				path: "edit/:_id",
+				path: "edit/:<%= id %>",
 				component: Edit<%= classify(name) %>ContainerComponent
 			}
 		]

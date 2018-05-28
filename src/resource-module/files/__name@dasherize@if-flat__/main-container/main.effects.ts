@@ -32,11 +32,11 @@ export class <%= classify(name) %>sListEffects {
 		.pipe(
 			map(action => action.payload),
 			switchMap(id => this.service.get(id)),
-			map(role => new <%= classify(name) %>FechedAction(role))
+			map(<%= dasherize(name) %> => new <%= classify(name) %>FechedAction(<%= dasherize(name) %>))
 		);
 
 	@Effect()
-	get_roles_list$ = this.actions$
+	get_<%= dasherize(name) %>s_list$ = this.actions$
 		.ofType(<%= classify(name) %>sListActionTypes.ROLES_LIST_START)
 		.pipe(
 			switchMap((data: any) => this.service.getList()),

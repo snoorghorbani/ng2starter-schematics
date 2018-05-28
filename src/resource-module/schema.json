@@ -12,6 +12,14 @@
         "index": 0
       }
     },
+    "id": {
+      "type": "string",
+      "description": "The name of the entiry id.",
+      "$default": {
+        "$source": "argv",
+        "index": 1
+      }
+    },
     "path": {
       "type": "string",
       "format": "path",
